@@ -1,8 +1,8 @@
 package com.example.unitjpa.jpamtest;
-
 import java.math.BigDecimal;
 import java.util.List;
 
+import org.hibernate.boot.model.source.internal.hbm.AbstractEntitySourceImpl;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -137,12 +137,111 @@ public class QueryMethods
 			System.out.println(s.getName());
 			System.out.println(s.getId());
 		}
-				);
+	);
 	}
 	
+	@Test
+	void jpqltest()
+	{
+		List<Product> pro=proRepo.findBynameorDescrjpql("Oracle","mango flowers");
+		pro.forEach((s->{
+		System.out.println(s.getId());
+		System.out.println(s.getDescri());
+		System.out.println(s.getName());
+		}));
+	}
 	
+	@Test
+	void jpaqusingparam()
+	{
+		List<Product> pro=proRepo.findBynamePramjpaql("Oracle","mango flowers");
+		pro.forEach((s)->{
+			System.out.println(s.getId());
+			System.out.println(s.getDescri());
+			System.out.println(s.getSku());
+		});
+	}
 	
-
+	@Test
+	void nativeSqlQuery()
+	{
+		List<Product> pro=proRepo.findbynameordescrnativesqlquery("Oracle","mango flowers");
+		pro.forEach((s)->{
+			System.out.println(s.getId());
+			System.out.println(s.getDescri());
+			System.out.println(s.getName());
+			System.out.println(s.getSku());
+		});
+	}
+	
+	@Test
+	void natisqlparam()
+	{
+		List<Product> pro=proRepo.findbynamenativesqlqueryparam("cocola","mango flowers");
+		pro.forEach((s)->{
+			System.out.println(s.getId());
+			System.out.println(s.getDescri());
+		});
+	}
+	//using NamedQuery() 
+	
+	@Test
+	void namedquery()
+	{
+		Product pr=proRepo.findByPrice(new BigDecimal(500));
+		System.out.println(pr.getId());
+		System.out.println(pr.getName());
+		System.out.println(pr.getSku());
+		
+	}
+	@Test
+	void multiplenamequeries()
+	{
+		List<Product> pr=proRepo.findAllOrderByNameDesc();
+		pr.forEach((s)->{
+			System.out.println(s.getName());
+			System.out.println(s.getId());
+			System.out.println(s.getImagurl());
+		}
+				);
+	}
+	@Test
+	void findpricemn()
+	{
+		Product pr=proRepo.findByPrice(new BigDecimal(500));
+		System.out.println(pr.getName());
+		System.out.println(pr.getId());
+		System.out.println(pr.getSku());
+	}
+	@Test
+	void namednativeQuery()
+	{
+		Product pr=proRepo.findBySku("23units");
+		System.out.println(pr.getId());
+		System.out.println(pr.getDescri());
+		System.out.println(pr.getName());
+	}
+	@Test
+	void multiplenamequery()
+	{
+		Product pro=proRepo.findByDescri("developmentkits");
+		System.out.println(pro.getId());
+		System.out.println(pro.getName());
+	}
+	
+	@Test
+	void multiplenamedquery()
+	{
+		List<Product> pro=proRepo.findAllOrderByNameAsc();
+		pro.forEach((s)->{
+			 System.out.println(s.getId());
+			 System.out.println(s.getName());
+			 System.out.println(s.getPrice());
+			 System.out.println(s.getSku());
+			 
+		});
+	}
+	
 	
 	
 }
