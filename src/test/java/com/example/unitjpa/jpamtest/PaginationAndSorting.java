@@ -87,15 +87,6 @@ public class PaginationAndSorting
 			lis.forEach((s)->{
 				System.out.println(s);
 			});
-			
-			
-			
 		}
-		
-		
-		
-		
-	
-	
 
 }

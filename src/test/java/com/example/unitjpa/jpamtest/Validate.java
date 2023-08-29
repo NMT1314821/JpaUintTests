@@ -42,16 +42,15 @@ public class Validate
 		pro.setName("Microsoft");
 		pro.setDescri("Offices XL,Powerpoin");
 		pro.setImagurl("mirosoft.jpg");
-		pro.setPrice(new BigDecimal(400));
+		pro.setPrice(new BigDecimal(20));
 		pro.setSku("24units");
 		pro.setActive(false);
-		
-		
+				
 		Product pro1=new Product();
 		pro1.setName("workbencg");
 		pro1.setDescri("databasesstoring");
 		pro1.setImagurl("db.jpg");
-		pro1.setPrice(new BigDecimal(500));
+		pro1.setPrice(new BigDecimal(60));
 		pro1.setSku("34nunits");
 		pro.setActive(true);
 		
